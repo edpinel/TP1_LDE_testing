@@ -106,25 +106,28 @@ class ListaDoblementeEnlazada():
         posicionActual=0
         
         if(posicion==0):
+            nodoAExtraer = nodoRecorrido
+            nodoAExtraer.siguiente = None
             self.cabeza.anterior = None
-            self.cabeza = nodoRecorrido.siguiente
+            self.cabeza = self.cabeza.siguiente
         
         if (posicion==self.tamanio-1):
+            nodoAExtraer = nodoRecorrido
+            nodoAExtraer.anterior = None
             self.cola.siguiente = None
-            self.cola = nodoRecorrido.anterior
+            self.cola = self.cola.anterior
         
         else:
             while(posicion > posicionActual):
-                nodoRecorrido=nodoRecorrido.obtenerSiguiente()
-                posicionActual+=1
+                  nodoRecorrido=nodoRecorrido.obtenerSiguiente()
+                  posicionActual+=1
             dato_anterior=nodoRecorrido.anterior
             dato_anterior.siguiente = nodoRecorrido.siguiente
             dato_siguiente=nodoRecorrido.siguiente
             dato_siguiente.anterior = nodoRecorrido.anterior
-
-        nodoAExtraer = nodoRecorrido
-        nodoAExtraer.siguiente = None
-        nodoAExtraer.anterior = None
+            nodoAExtraer = nodoRecorrido
+            nodoAExtraer.anterior = None
+            nodoAExtraer.siguiente = None
 
         self.tamanio=self.tamanio-1
 
